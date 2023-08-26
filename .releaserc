@@ -1,0 +1,10 @@
+{
+  "extends": "@binayabaral/semantic-release-config",
+  "branches": [
+    "main",
+    {
+      "name": "staging",
+      "prerelease": true
+    }
+  ]
+}
