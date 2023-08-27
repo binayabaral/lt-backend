@@ -64,12 +64,6 @@ jobs:
           yarn build
           cp pm2.config.js package.json yarn.lock appspec.yml after-install.sh .npmrc dist/
 
-      - name: Create a release
-        if: github.event.pull_request.merged && (contains(github.base_ref, 'main'))
-        run: npx semantic-release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Push to s3 bucket
         if: github.event.pull_request.merged || github.event_name == 'workflow_dispatch'
         run: |
