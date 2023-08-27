@@ -75,7 +75,7 @@ jobs:
         run: |
           cd ${{ github.workspace }}/dist
           aws deploy push \
-          --application-name backend \
+          --application-name backend-${{ needs.resolve-env.outputs.env_name }} \
           --description "This is a revision for the backend-${{ github.sha }}" \
           --s3-location s3://$ARTIFACT_BUCKET_NAME/${{ steps.build.outputs.ARTIFACT_NAME }}.zip
         env:
@@ -89,7 +89,7 @@ jobs:
         if: github.event.pull_request.merged || github.event_name == 'workflow_dispatch'
         run: |
           aws deploy create-deployment \
-            --application-name backend \
+            --application-name backend-${{ needs.resolve-env.outputs.env_name }} \
             --deployment-group-name ${{ needs.resolve-env.outputs.env_name }} \
             --file-exists-behavior OVERWRITE \
             --s3-location bucket=$ARTIFACT_BUCKET_NAME,key=${{ steps.build.outputs.ARTIFACT_NAME }}.zip,bundleType=zip
