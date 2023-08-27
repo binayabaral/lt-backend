@@ -72,6 +72,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push to s3 bucket
+        if: github.event.pull_request.merged || github.event_name == 'workflow_dispatch'
         run: |
           cd ${{ github.workspace }}/dist
           aws deploy push \
@@ -86,6 +87,7 @@ jobs:
           ARTIFACT_BUCKET_NAME: ${{ vars.ARTIFACT_BUCKET }}
 
       - name: Create deployment
+        if: github.event.pull_request.merged || github.event_name == 'workflow_dispatch'
         run: |
           aws deploy create-deployment \
             --application-name backend \
