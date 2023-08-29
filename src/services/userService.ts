@@ -12,7 +12,9 @@ import { StatusCodes } from "http-status-codes";
  * @param {UserToInsert} user
  * @returns {Promise<Success<User>>}
  */
-export const createUser = async (payload: CreateUserPayload): Promise<Success<User>> => {
+export const createUser = async (
+  payload: CreateUserPayload
+): Promise<Success<User>> => {
   const { fileString } = payload;
 
   try {
@@ -26,6 +28,7 @@ export const createUser = async (payload: CreateUserPayload): Promise<Success<Us
     const insertedUser = await UserModel.createUser({
       name: payload.name,
       email: payload.email,
+      phoneNumber: payload.phoneNumber,
       profilePictureURL: url,
     });
 
@@ -34,7 +37,10 @@ export const createUser = async (payload: CreateUserPayload): Promise<Success<Us
       message: "User created successfully",
     };
   } catch (error) {
-    throw new CustomError(`Error creating a new user`, StatusCodes.INTERNAL_SERVER_ERROR);
+    throw new CustomError(
+      `Error creating a new user`,
+      StatusCodes.INTERNAL_SERVER_ERROR
+    );
   }
 };
 
