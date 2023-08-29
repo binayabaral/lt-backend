@@ -1,3 +1,10 @@
+## [1.1.0](https://github.com/binayabaral/lt-backend/compare/v1.0.0...v1.1.0) (2023-08-29)
+
+
+### :sparkles: Features
+
+* add phone number ([37b9aee](https://github.com/binayabaral/lt-backend/commit/37b9aeed28fcc440ed56a180e57ef63d0d5db290))
+
 ## 1.0.0 (2023-08-27)
 
 
