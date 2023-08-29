@@ -12,14 +12,22 @@ class User {
       logger.info(`Inserting user ${user.name} into database`);
 
       const newUser = await knex(this.table)
-        .insert({ name: user.name, email: user.email, profile_pic_url: user.profilePictureURL })
+        .insert({
+          name: user.name,
+          email: user.email,
+          profile_pic_url: user.profilePictureURL,
+          phone_number: user.phoneNumber,
+        })
         .returning("*");
       logger.info("User inserted");
 
       return newUser;
     } catch (error) {
       logger.error(error);
-      throw new CustomError(`Error inserting user into database`, StatusCodes.INTERNAL_SERVER_ERROR);
+      throw new CustomError(
+        `Error inserting user into database`,
+        StatusCodes.INTERNAL_SERVER_ERROR
+      );
     }
   }
 
