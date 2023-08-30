@@ -29,6 +29,7 @@ export const createUser = async (
       name: payload.name,
       email: payload.email,
       phoneNumber: payload.phoneNumber,
+      address: payload.address,
       profilePictureURL: url,
     });
 

@@ -16,6 +16,7 @@ class User {
           name: user.name,
           email: user.email,
           profile_pic_url: user.profilePictureURL,
+          address: user.address,
           phone_number: user.phoneNumber,
         })
         .returning("*");

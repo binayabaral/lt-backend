@@ -10,14 +10,14 @@ import * as userService from "../services/userService";
  * @param {Response} res
  */
 export const createUser = (req: Request, res: Response, next: NextFunction) => {
-  const { name, email, fileString, phoneNumber } = req.body;
+  const { name, email, fileString, phoneNumber, address } = req.body;
 
   if (!name || !email || !fileString) {
     throw new CustomError("Missing required fields", StatusCodes.BAD_REQUEST);
   }
 
   userService
-    .createUser({ name, email, fileString, phoneNumber })
+    .createUser({ name, email, fileString, phoneNumber, address })
     .then((data) => res.json(data))
     .catch((err) => next(err));
 };
