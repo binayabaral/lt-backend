@@ -1,3 +1,10 @@
+## [1.2.0](https://github.com/binayabaral/lt-backend/compare/v1.1.0...v1.2.0) (2023-08-30)
+
+
+### :sparkles: Features
+
+* add address field ([884acef](https://github.com/binayabaral/lt-backend/commit/884acef50699727106aa2db80c73c8617e019d9d))
+
 ## [1.1.0](https://github.com/binayabaral/lt-backend/compare/v1.0.0...v1.1.0) (2023-08-29)
 
 
